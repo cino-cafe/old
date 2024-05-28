@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cino Cafe Drawing Game</title>
+    <style>
+        /* Common styles for both mobile and desktop */
+        #drawing-container {
+            text-align: center;
+        }
+
+        #drawing-canvas {
+            border: 2px solid #333;
+            background: #fff;
+        }
+
+        #controls {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Mobile-specific styles using media queries */
+        @media (max-width: 768px) {
+            /* Adjust canvas size for mobile devices */
+            #drawing-canvas {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
+
+            #controls {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+        }
+
+        /* Desktop-specific styles using media queries */
+        @media (min-width: 769px) {
+            #controls {
+                margin-top: 10px;
+                flex-direction: row;
+            }
+        }
+
+        /* Original button styles */
+        #color-picker, #color-dropdown, #line-thickness {
+            width: 120px;
+            height: 30px;
+            font-size: 16px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            margin-right: 10px;
+            background: #fff;
+        }
+
+        .tool-button {
+            width: 80px;
+            height: 30px;
+            font-size: 16px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .tool-button.active {
+            background: #ccc;
+        }
+
+        .tool-button:not(.active):hover {
+            background: #ddd;
+        }
+
+        #clear-button {
+            width: 80px;
+            height: 30px;
+            font-size: 16px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background: #ff6347; /* Red */
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #save-button {
+            width: 80px;
+            height: 30px;
+            font-size: 16px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #4CAF50; /* Green */
+            color: white;
+        }
+
+        #load-button {
+            width: 80px;
+            height: 30px;
+            font-size: 16px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #0074D9; /* Blue */
+            color: white;
+        }
+
+        #eraser-button {
+            width: 80px;
+            height: 30px;
+            font-size: 16px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Styling for the custom file input button */
+        .custom-file-input-button {
+            display: inline-block;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        /* Hide the default file input element */
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Cino Cafe Drawing App</h1>
+    </center>
+    <div id="drawing-container">
+        <canvas id="drawing-canvas" width="1000" height="600"></canvas>
+        <div id="controls">
+            <input type="color" id="color-picker" value="#000000">
+            <select id="color-dropdown">
+                <option value="#000000">Black</option>
+                <option value="#FF0000">Red</option>
+                <option value="#00FF00">Green</option>
+                <option value="#0000FF">Blue</option>
+                <option value="#FFFF00">Yellow</option>
+                <option value="#FF00FF">Purple</option>
+                <option value="#00FFFF">Cyan</option>
+            </select>
+            <input type="range" id="line-thickness" min="1" max="20" value="5">
+            <button id="draw-button" class="tool-button active">Draw</button>
+            <button id="eraser-button" class="tool-button">Eraser</button>
+            <button id="clear-button" class="tool-button">Clear</button>
+            <label for="file-input" class="custom-file-input-button">Load</label>
+            <input type="file" id="file-input" accept="image/*">
+            <button id="save-button" class="tool-button" style="background: #4CAF50; color: white;">Save</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("drawing-canvas");
+        const ctx = canvas.getContext("2d");
+        let drawing = true; // Start with the draw tool active
+        let lineColor = "#000000";
+        let lineThickness = 5;
+        let isDrawing = false;
+
+        // Mobile touch support
+        canvas.addEventListener("touchstart", () => {
+            if (drawing) {
+                ctx.globalCompositeOperation = "source-over";
+            } else {
+                ctx.globalCompositeOperation = "destination-out";
+            }
+            isDrawing = true;
+        });
+
+        canvas.addEventListener("touchend", () => {
+            isDrawing = false;
+            ctx.beginPath();
+        });
+
+        canvas.addEventListener("touchmove", (e) => {
+            e.preventDefault();
+            draw(e.changedTouches[0]);
+        });
+
+        canvas.addEventListener("mousedown", () => {
+            if (drawing) {
+                ctx.globalCompositeOperation = "source-over";
+            } else {
+                ctx.globalCompositeOperation = "destination-out";
+            }
+            isDrawing = true;
+        });
+
+        canvas.addEventListener("mouseup", () => {
+            isDrawing = false;
+            ctx.beginPath();
+        });
+
+        canvas.addEventListener("mousemove", draw);
+
+        document.getElementById("color-picker").addEventListener("input", (e) => {
+            lineColor = e.target.value;
+        });
+
+        document.getElementById("color-dropdown").addEventListener("change", (e) => {
+            lineColor = e.target.value;
+        });
+
+        document.getElementById("line-thickness").addEventListener("input", (e) => {
+            lineThickness = e.target.value;
+        });
+
+        document.getElementById("draw-button").addEventListener("click", () => {
+            drawing = true;
+            document.getElementById("draw-button").classList.add("active");
+            document.getElementById("eraser-button").classList.remove("active");
+        });
+
+        document.getElementById("eraser-button").addEventListener("click", () => {
+            drawing = false;
+            document.getElementById("draw-button").classList.remove("active");
+            document.getElementById("eraser-button").classList.add("active");
+        });
+
+        document.getElementById("clear-button").addEventListener("click", () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        document.getElementById("save-button").addEventListener("click", () => {
+            const dataURL = canvas.toDataURL();
+            const a = document.createElement("a");
+            a.href = dataURL;
+            a.download = "drawing.png";
+            a.click();
+        });
+
+        document.getElementById("file-input").addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const img = new Image();
+                    img.onload = () => {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.drawImage(img, 0, 0);
+                    };
+                    img.src = reader.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function draw(e) {
+            if (!isDrawing) return;
+            ctx.lineWidth = lineThickness;
+            ctx.lineCap = "round";
+
+            if (drawing) {
+                ctx.strokeStyle = lineColor;
+            } else {
+                ctx.strokeStyle = "#fff"; // White color for erasing
+            }
+
+            ctx.lineTo(
+                e.clientX - canvas.getBoundingClientRect().left,
+                e.clientY - canvas.getBoundingClientRect().top
+            );
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(
+                e.clientX - canvas.getBoundingClientRect().left,
+                e.clientY - canvas.getBoundingClientRect().top
+            );
+        }
+    </script>
+</body>
+</html>
+

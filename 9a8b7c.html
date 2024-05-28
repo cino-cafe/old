@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <link rel="shortcut icon" href="photo-gallery\old-sign.jpg" type="image/x-icon">
+
+    <style>
+        body {
+        background-image: url('https://i.pinimg.com/736x/31/69/4c/31694c8cfd130a606475b11ec48ea828.jpg');
+        
+        }
+        </style>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+</head>
+<body>
+<center>
+
+<h2>Cino Cafe system</h2>
+<hr>
+<h2>cino cafe website users</h2>
+
+<table style="width:30%">
+  
+  <tr>
+    <th>username</th>
+    <th>password</th>
+  </tr>
+  <tr>
+    <td>hpaolella</td>
+    <td>*********</td>
+  </tr>
+  <tr>
+    <td>amelia_p</td>
+    <td>*****</td>
+  </tr>
+  <tr>
+    <td>nancy-ruddick</td>
+    <td>************</td>
+  </tr>
+  <tr>
+    <td>gpaolella</td>
+    <td>********</td>
+  </tr>
+  <tr>
+    <td>daisy_paolella</td>
+    <td>******</td>
+  </tr>
+  <tr>
+    <td>mike-p</td>
+    <td>*********</td>
+  </tr>
+</table>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+  
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+  
+      label {
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+  
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+      }
+  
+      hr {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+      }
+  
+      .registerbtn {
+        background-color: rgb(226, 95, 83);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    </style>
+   
+    <body>
+    <hr>
+    <form action="">
+      <div class="container">
+        <h1>Register</h1>
+        <p>Change account details</p>
+        
+    
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter username" name="username" id="username" required>
+
+        <label for="psw"><b>Old Password</b></label>
+        <input type="password" placeholder="Enter old Password" name="psw" id="psw" required>
+
+        <label for="psw-repeat"><b>New Password</b></label>
+        <input type="password" placeholder="Enter New Password" name="psw-repeat" id="psw-repeat" required>
+        <hr>
+    
+        <button type="submit" class="registerbtn">Register</button>
+      </div>
+      
+      </div>
+    </form>
+    </center>
+    </body>
+</head>
+<br>
+<br>
+<body>
+  <center>
+    <div id="piechart"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <script type="text/javascript">
+    // Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    
+    // Draw the chart and set the chart values
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['accounts', 8],
+      ['removed accounts', 2],
+      ['updates', 4],
+      ['errors', 2],
+      ['security check', 8]
+    ]);
+    
+      // Optional; add a title and set the width and height of the chart
+      var options = {'title':'security system', 'width':550, 'height':400};
+    
+      // Display the chart inside the <div> element with id="piechart"
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(data, options);
+    }
+    </script>
+
+    
+</body>
+<style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    * {box-sizing: border-box;}
+    
+    /* Set a style for all buttons */
+    button {
+      background-color: #04AA6D;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+    
+    button:hover {
+      opacity:1;
+    }
+    
+    /* Float cancel and delete buttons and add an equal width */
+    .cancelbtn, .deletebtn {
+      float: left;
+      width: 50%;
+    }
+    
+    /* Add a color to the cancel button */
+    .cancelbtn {
+      background-color: #ccc;
+      color: black;
+    }
+    
+    /* Add a color to the delete button */
+    .deletebtn {
+      background-color: #f44336;
+    }
+    
+    /* Add padding and center-align text to the container */
+    .container {
+      padding: 16px;
+      text-align: center;
+    }
+    
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: #474e5d;
+      padding-top: 50px;
+    }
+    
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+    }
+    
+    /* Style the horizontal ruler */
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+     
+    /* The Modal Close Button (x) */
+    .close {
+      position: absolute;
+      right: 35px;
+      top: 15px;
+      font-size: 40px;
+      font-weight: bold;
+      color: #f1f1f1;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #f44336;
+      cursor: pointer;
+    }
+    
+    /* Clear floats */
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    
+    /* Change styles for cancel button and delete button on extra small screens */
+    @media screen and (max-width: 300px) {
+      .cancelbtn, .deletebtn {
+         width: 100%;
+      }
+    }
+    </style>
+    </center>
+    <body>
+    <center>
+        <br>
+        <br>
+    <h2>Turn off the website</h2>
+    
+    <button onclick="document.getElementById('id01').style.display='block'">Shut Down</button>
+    
+    <div id="id01" class="modal">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+      <form class="modal-content" action="/action_page.php">
+        <div class="container">
+          <h1>This would mean that the website will be offline </h1>
+          <p>Are you sure you want the website to be OFFLINE?</p>
+        
+          <div class="clearfix">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">OFFLINE</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+    
+    </center>
+    </body>
+    
+<center>
+<img src="https://w0.peakpx.com/wallpaper/319/204/HD-wallpaper-data-center-data-room-electronics-laptop-it-tech-servers.jpg" alt="https://w0.peakpx.com/wallpaper/319/204/HD-wallpaper-data-center-data-room-electronics-laptop-it-tech-servers.jpg" width="500" height="300"
+  </center>
+
+</body>
+</html>

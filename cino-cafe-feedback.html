@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="photo-gallery\old-sign.jpg" type="image/x-icon">
+    <title>Email Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url('https://www.asianpaints.com/content/dam/asian_paints/colours/swatches/470.png.transform/cc-width-720-height-540/image.png');
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #email-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+
+        input[type="email"],
+        input[type="text"],
+        textarea,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Modify input field and textarea styles for better fit */
+        input[type="email"],
+        input[type="text"],
+        textarea {
+            width: 100%;
+            max-width: 90%; /* Reduce the max-width for the fields */
+        }
+
+        textarea {
+            height: 200px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #266b8e;
+        }
+
+        /* Styling for the loader */
+        .loader {
+            display: none;
+            border: 10px solid #cbc9c9;
+            border-top: 10px solid #f65835;
+            border-radius: 100%;
+            width: 70px;
+            height: 70px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            top: 65%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .navbar a {
+                font-size: 14px;
+            }
+
+            #email-form {
+                max-width: 90%;
+                padding: 10px;
+            }
+
+            input[type="email"],
+            input[type="text"],
+            textarea {
+                font-size: 14px;
+            }
+
+            textarea {
+                height: 150px;
+            }
+        }
+    </style>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="cino-cafe.html">Home</a>
+        <h1>Cino Cafe Feedback</h1>
+    </div>
+    <br>
+    <form id="email-form">
+        <input type="EMAIL" id="EMAIL" placeholder="Your Email...">
+        <input type="email" id="recipient" placeholder="Your First Name...">
+        <input type="text" id="subject" placeholder="Your Last Name...">
+        <textarea id="message" placeholder="Tell Us What You Think Of Cino Cafe..."></textarea>
+        <button type="button" id="submitButton">Submit</button>
+    </form>
+    <div id="loader" class="loader"></div>
+
+    <script>
+        emailjs.init("bO3YR9VLVnM7PnpAs");
+
+        document.getElementById("submitButton").addEventListener("click", function () {
+            const EMAIL = document.getElementById("EMAIL").value;
+            const recipient = document.getElementById("recipient").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+
+            const templateParams = {
+                EMAIL: EMAIL,
+                to_email: recipient,
+                subject: subject,
+                message: message
+            };
+
+            document.getElementById("loader").style.display = "block";
+
+            emailjs.send("service_k4md6h9", "template_q0q1jg3", templateParams)
+                .then(function (response) {
+                    document.getElementById("loader").style.display = "none";
+                    alert("Your Feedback was sent Successfully!");
+                    window.location.href = "form-complete.html";
+                }, function (error) {
+                    document.getElementById("loader").style.display = "none";
+                    alert("Email could not be sent. Error: " + error.text);
+                });
+        });
+    </script>
+</body>
+
+</html>

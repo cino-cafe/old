@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <link rel="shortcut icon" href="photo-gallery\old-sign.jpg" type="image/x-icon">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+    }
+    
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: red;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    
+    #myBtn:hover {
+      background-color: #555;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    
+    
+    <script>
+    // Get the button
+    let mybutton = document.getElementById("myBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+    </script>
+    
+    </body>
+    <link rel="shortcut icon" href="photo-gallery\old-sign.jpg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+    }
+    
+    .navbar a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+    
+    .dropdown .dropbtn {
+      font-size: 16px;  
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+    
+    .navbar a:hover, .dropdown:hover .dropbtn {
+      background-color: red;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    </style>
+    </head>
+    <body>
+    
+    
+    
+     
+     
+    
+    <center>
+    <div class="navbar">
+      <a href="cino-cafe.html">Home</a>
+      <h1 style="color: white;">Cafe Cafe Photo Gallery</h1>
+     
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create a column layout with Flexbox */
+    .row {
+      display: flex;
+    }
+    
+    /* Left column (menu) */
+    .left {
+      flex: 35%;
+      padding: 15px 0;
+    }
+    
+    .left h2 {
+      padding-left: 8px;
+    }
+    
+    /* Right column (page content) */
+    .right {
+      flex: 65%;
+      padding: 15px;
+    }
+    
+    /* Style the search box */
+    #mySearch {
+      width: 100%;
+      font-size: 18px;
+      padding: 11px;
+      border: 1px solid #ddd;
+    }
+    
+    /* Style the navigation menu inside the left column */
+    #myMenu {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    #myMenu li a {
+      padding: 12px;
+      text-decoration: none;
+      color: black;
+      display: block
+    }
+    
+    #myMenu li a:hover {
+      background-color: #eee;
+    }
+    </style>
+    </head>
+    <body>
+    
+    
+    
+      
+    
+    </div>
+    
+    <script>
+    function myFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("mySearch");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("myMenu");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+    </script>
+    
+    </body>
+    
+     </div>
+      </div> 
+    </div>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+</style>
+<body>
+
+<!-- Header -->
+<div class="header">
+    
+  
+  
+</div>
+
+<!-- Photo Grid -->
+<div class="row"> 
+
+
+
+
+  <div class="column">
+    <img src="photo-gallery\full-view-2.jpg" style="width:100%">
+    <img src="photo-gallery\Cino-interior.jpg" style="width:100%">
+    <img src="photo-gallery\full view.jpg" style="width:100%">
+    <img src="photo-gallery\Cino-Cafe.jpg" style="width:100%">
+    <img src="photo-gallery\dark-view.jpg" style="width:100%">
+    <img src="photo-gallery\cino-staff.jpg" style="width:100%">
+    <img src="photo-gallery\first-open.jpg" style="width:100%">
+    <img src="photo-gallery\scone.jpg" style="width:100%">
+    <img src="photo-gallery\clock.jpg" style="width:100%">
+    <img src="photo-gallery\cino-mask.jpg" style="width:100%">
+    <img src="photo-gallery\covid.jpg" style="width:100%">
+    <img src="photo-gallery\customer.jpg" style="width:100%">
+    <img src="photo-gallery\inside.jpg" style="width:100%">
+    <img src="photo-gallery\busy.jpg" style="width:100%">
+    <img src="photo-gallery\outside.jpg" style="width:100%">
+    <img src="photo-gallery\old-sign.jpg" style="width:100%">
+    <img src="photo-gallery\sign-2.jpg" style="width:100%">
+    <img src="photo-gallery\side-stair.jpg" style="width:100%">
+ 
+
+  </div>
+
+
+  <div class="column">
+    <img src="photo-gallery\coffee-machine-2.jpg" style="width:100%">
+    <img src="photo-gallery\fork-sign.jpg" style="width:100%">
+    <img src="photo-gallery\anitpasta.jpg" style="width:100%">
+    <img src="photo-gallery\antipasta-2.jpg" style="width:100%">
+    <img src="photo-gallery\antipasta-3.jpg" style="width:100%">
+    <img src="photo-gallery\antipasta-4.jpg" style="width:100%">
+    <img src="photo-gallery\Breakfast.jpg" style="width:100%">
+    <img src="photo-gallery\breakfast-2.jpg" style="width:100%">
+    <img src="photo-gallery\breakfast-3.jpg" style="width:100%">
+    <img src="photo-gallery\breakfast-4.jpg" style="width:100%">
+    <img src="photo-gallery\breakfast-5.jpg" style="width:100%">
+    <img src="photo-gallery\breakfast-6.jpg" style="width:100%">
+    <img src="photo-gallery\pasta.jpg" style="width:100%">
+    <img src="photo-gallery\pasta-2.jpg" style="width:100%">
+    <img src="photo-gallery\pasta-3.jpg" style="width:100%">
+    <img src="photo-gallery\pasta-4.jpg" style="width:100%">
+    <img src="photo-gallery\pasta-5.jpg" style="width:100%">
+    <img src="photo-gallery\pizza.jpg" style="width:100%">
+    <img src="photo-gallery\panni.jpg" style="width:100%">
+   
+    
+    
+  </div>
+
+
+  <div class="column">
+    <img src="photo-gallery\drinks-shelf-2.jpg" style="width:100%">
+    <img src="photo-gallery\tele-side-sign.jpg" style="width:100%">
+    <img src="photo-gallery\coffee-2.jpg" style="width:100%">
+    <img src="photo-gallery\coffee-3.jpg" style="width:100%">
+    <img src="photo-gallery\coffee-4.jpg" style="width:100%">
+    <img src="photo-gallery\hotchoc.jpg" style="width:100%">
+    <img src="photo-gallery\hot-choc.jpg" style="width:100%">
+    <img src="photo-gallery\mug.jpg" style="width:100%">
+    <img src="photo-gallery\hot-chocolate.jpg" style="width:100%">
+    <img src="photo-gallery\milkshake.jpg" style="width:100%">
+    <img src="photo-gallery\milkshake-2.jpg" style="width:100%">
+    <img src="photo-gallery\glass-2.jpg" style="width:100%">
+    <img src="photo-gallery\display.jpg" style="width:100%">
+    <img src="photo-gallery\nice.jpg" style="width:100%">
+    <img src="photo-gallery\cookies.jpg" style="width:100%">
+    <img src="photo-gallery\browne-2.jpg" style="width:100%">
+    <img src="photo-gallery\cake-2.jpg" style="width:100%">
+    <img src="photo-gallery\cake-22.jpg" style="width:100%">
+
+  </div>
+
+
+ 
+  <div class="column">
+    <img src="photo-gallery\cinoowners.jpg" style="width:100%">
+    <img src="photo-gallery\nonna-70.jpg" style="width:100%">
+    <img src="photo-gallery\nonnor-dom.jpg" style="width:100%">
+    <img src="photo-gallery\dom-2.jpg" style="width:100%">
+    <img src="photo-gallery\staz-2.jpg" style="width:100%">
+    <img src="photo-gallery\staz-3.jpg" style="width:100%">
+    <img src="photo-gallery\staz-5.jpg" style="width:100%">
+    <img src="photo-gallery\staz-6.jpg" style="width:100%">
+    <img src="photo-gallery\staz-food.png" style="width:100%">
+    <img src="photo-gallery\shotbread.jpg" style="width:100%">
+    <img src="photo-gallery\hospital-food.jpg" style="width:100%">
+    <img src="photo-gallery\nauthy-scones.jpg" style="width:100%">
+    <img src="photo-gallery\biscoff.jpg" style="width:100%">
+    <img src="photo-gallery\omlete.jpg" style="width:100%">
+    <img src="photo-gallery\cheesecake.jpg" style="width:100%">
+    <img src="photo-gallery\sign.jpg" style="width:100%">
+    <img src="photo-gallery\chalk.jpg" style="width:100%">
+    <img src="photo-gallery\the-end.jpg" style="width:100%">
+
+  </div>
+
+</div>
+
+</body>
+</html>

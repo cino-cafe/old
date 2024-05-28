@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cino Cafe Connect 4 Game</title>
+    <style>
+        body {
+            background-color: #009688;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(7, 60px);
+            grid-template-rows: repeat(6, 60px);
+            gap: 5px;
+            width: 430px;
+            margin-top: 20px;
+            border: 10px solid #333;
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cell {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .cell:hover {
+            background-color: #eee;
+        }
+
+        #player-input {
+            text-align: center;
+            margin-top: 20px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #player-input label {
+            font-size: 1.2em;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        #player-input input {
+            font-size: 1.2em;
+            padding: 10px;
+            border: 1px solid #333;
+            margin: 5px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            background-color: #eee;
+            transition: background-color 0.3s;
+        }
+
+        #player-input input:hover {
+            background-color: #fff;
+        }
+
+        #startGame {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #startGame:hover {
+            background-color: #009688;
+        }
+
+        #player-name {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1.5em;
+            color: #fff;
+        }
+
+        #game-over-message {
+            display: none;
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #fff;
+            border: 2px solid;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        #playAgainButton {
+            display: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #playAgainButton:hover {
+            background-color: #009688;
+        }
+
+        #game-options {
+            margin-top: 20px;
+        }
+
+        #harry-options {
+            margin-top: 20px;
+        }
+
+        #playAgain, #changeNames {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        #playAgain:hover, #changeNames:hover {
+            background-color: #555;
+        }
+
+        /* Hide the player input when the game starts */
+        .hidden {
+            display: none;
+        }
+
+        /* Instruction modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: left;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 28px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: #f00;
+        }
+
+        /* Style the show instructions button */
+        #show-instructions {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #show-instructions:hover {
+            background-color: #009688;
+        }
+    </style>
+</head>
+<body>
+    <h1>Connect 4</h1>
+    <div class="game-container">
+        <div id="player-name">
+            <p><strong>Player Turn:</strong> <span id="currentPlayerName"></span></p>
+        </div>
+        <div id="game-over-message"></div>
+        <div id="connect4" class="game-board"></div>
+        <div id="player-input">
+            <label for="player1Name">Player 1 Name:</label>
+            <input type="text" id="player1Name" placeholder="Enter Name">
+            <br>
+            <label for="player2Name">Player 2 Name:</label>
+            <input type="text" id="player2Name" placeholder="Enter Name">
+            <br>
+            <button id="startGame">Start Game</button>
+            <button id="show-instructions">Show Instructions</button>
+        </div>
+        <div id="game-options" class="hidden">
+            <button id="playAgain">Play Again</button>
+            <br>
+            <br>
+            <a href="connect4.html" style="text-decoration:none" id="changeNames">Change Names</a>
+        </div>
+    
+    </div>
+
+    <!-- Instruction modal -->
+    <div id="instructions-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-instructions">&times;</span>
+            <h2>How to Play Connect 4</h2>
+            <p>Connect Four is a two-player connection game in which the players choose a color and then take turns dropping colored discs from the top into a grid. The pieces fall straight down, occupying the lowest available space within the column.</p>
+            <p>The objective of the game is to be the first to form a horizontal, vertical, or diagonal line of four of one's own discs.</p>
+        </div>
+    </div>
+
+    <script>
+        const numRows = 6;
+        const numCols = 7;
+        let player1Name = "";
+        let player2Name = "";
+
+        let currentPlayer;
+        let board = [];
+        let gameStarted = false;
+        let gameWon = false;
+
+        const playerInput = document.getElementById('player-input');
+        const playerNameDisplay = document.getElementById('player-name');
+        const currentPlayerName = document.getElementById('currentPlayerName');
+        const player1NameInput = document.getElementById('player1Name');
+        const player2NameInput = document.getElementById('player2Name');
+        const startGameButton = document.getElementById('startGame');
+        const connect4 = document.getElementById('connect4');
+        const gameOptions = document.getElementById('game-options');
+        const playAgainButton = document.getElementById('playAgain');
+        const changeNamesButton = document.getElementById('changeNames');
+        const gameOverMessage = document.getElementById('game-over-message');
+        const instructionsModal = document.getElementById('instructions-modal');
+        const showInstructionsButton = document.getElementById('show-instructions');
+        const closeInstructionsButton = document.getElementById('close-instructions');
+
+        startGameButton.addEventListener('click', () => {
+            if (!gameStarted) {
+                player1Name = player1NameInput.value;
+                player2Name = player2NameInput.value;
+
+                if (player1Name && player2Name) {
+                    playerInput.classList.add('hidden');
+                    currentPlayer = player1Name;
+                    updatePlayerNameDisplay();
+                    createBoard();
+                    gameStarted = true;
+                    gameOptions.classList.remove('hidden');
+                } else {
+                    alert("Please enter names for both players.");
+                }
+            }
+        });
+
+        playAgainButton.addEventListener('click', () => {
+            if (gameStarted) {
+                clearBoard();
+                gameOverMessage.style.display = 'none';
+                gameOptions.classList.remove('hidden');
+                playAgainButton.style.display = "none";
+                gameWon = false;
+            }
+        });
+
+        changeNamesButton.addEventListener('click', () => {
+            if (!gameStarted) {
+                playerInput.classList.remove('hidden');
+                gameOptions.classList.add('hidden');
+                gameOverMessage.style.display = 'none';
+            }
+        });
+
+        showInstructionsButton.addEventListener('click', () => {
+            instructionsModal.style.display = 'block';
+        });
+
+        closeInstructionsButton.addEventListener('click', () => {
+            instructionsModal.style.display = 'none';
+        });
+
+        function updatePlayerNameDisplay() {
+            currentPlayerName.textContent = currentPlayer;
+        }
+
+        function createBoard() {
+            for (let row = 0; row < numRows; row++) {
+                board[row] = [];
+                for (let col = 0; col < numCols; col++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.dataset.row = row;
+                    cell.dataset.col = col;
+                    cell.addEventListener('click', handleMove);
+                    connect4.appendChild(cell);
+                    board[row][col] = null;
+                }
+            }
+        }
+
+        function checkForWin(row, col) {
+    if (
+        checkVerticalWin(row, col) ||
+        checkHorizontalWin(row, col) ||
+        checkDiagonalBottomLeftToTopRightWin(row, col) ||
+        checkDiagonalBottomRightToTopLeftWin(row, col)
+    ) {
+        return true;
+    }
+    return false;
+}
+
+function checkVerticalWin(row, col) {
+    let count = 1;
+    for (let i = 1; i < 4; i++) {
+        const newRow = row + i;
+        if (newRow >= numRows || board[newRow][col] !== currentPlayer) {
+            break;
+        }
+        count++;
+    }
+    return count >= 4;
+}
+
+function checkHorizontalWin(row, col) {
+    const rowArray = board[row];
+    let count = 1;
+
+    for (let i = 1; i < 4; i++) {
+        if (col + i >= numCols || rowArray[col + i] !== currentPlayer) {
+            break;
+        }
+        count++;
+    }
+
+    for (let i = 1; i < 4; i++) {
+        if (col - i < 0 || rowArray[col - i] !== currentPlayer) {
+            break;
+        }
+        count++;
+    }
+
+    return count >= 4;
+}
+
+function checkDiagonalBottomLeftToTopRightWin(row, col) {
+    let count = 1;
+
+    for (let i = 1; i < 4; i++) {
+        const newRow = row - i;
+        const newCol = col + i;
+        if (newRow < 0 || newCol >= numCols || board[newRow][newCol] !== currentPlayer) {
+            break;
+        }
+        count++;
+    }
+
+    for (let i = 1; i < 4; i++) {
+        const newRow = row + i;
+        const newCol = col - i;
+        if (newRow >= numRows || newCol < 0 || board[newRow][newCol] !== currentPlayer) {
+            break;
+        }
+        count++;
+    }
+
+    return count >= 4;
+}
+
+function checkDiagonalBottomRightToTopLeftWin(row, col) {
+    let count = 1;
+
+    for (let i = 1; i < 4; i++) {
+        const newRow = row - i;
+        const newCol = col - i;
+        if (newRow < 0 || newCol < 0 || board[newRow][newCol] !== currentPlayer) {
+            break;
+        }
+        count++;
+    }
+
+    for (let i = 1; i < 4; i++) {
+        const newRow = row + i;
+        const newCol = col + i;
+        if (newRow >= numRows || newCol >= numCols || board[newRow][newCol] !== currentPlayer) {
+            break;
+        }
+        count++;
+    }
+
+    return count >= 4;
+}
+
+
+
+
+
+        function handleMove(event) {
+    if (gameWon) {
+        return;
+    }
+
+    const col = event.target.dataset.col;
+    for (let row = numRows - 1; row >= 0; row--) {
+        if (board[row][col] === null) {
+            const cell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+            cell.style.backgroundColor = currentPlayer.toLowerCase() === player1Name.toLowerCase() ? 'red' : 'blue';
+
+
+
+            board[row][col] = currentPlayer;
+            if (checkForWin(row, col)) {
+                gameWon = true;
+                gameOverMessage.textContent = `${currentPlayer} wins!`;
+                gameOverMessage.style.display = 'block';
+                gameOverMessage.style.backgroundColor = currentPlayer.toLowerCase() === player1Name.toLowerCase() ? 'red' : 'blue'; // Set the background color for the game over message
+                playAgainButton.style.display = "block";
+                return;
+            }
+            currentPlayer = currentPlayer.toLowerCase() === player1Name.toLowerCase() ? player2Name : player1Name;
+            updatePlayerNameDisplay();
+            break;
+        }
+    }
+}
+
+
+        function clearBoard() {
+            for (let row = 0; row < numRows; row++) {
+                for (let col = 0; col < numCols; col++) {
+                    const cell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    cell.style.backgroundColor = 'white';
+                    board[row][col] = null;
+                }
+            }
+            currentPlayer = player1Name;
+            updatePlayerNameDisplay();
+        }
+    </script>
+</body>
+</html>

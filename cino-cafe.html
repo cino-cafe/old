@@ -1,0 +1,1227 @@
+
+<!DOCTYPE html>
+<html>
+
+<link rel="icon" type="image/png" href="https://cino-cafe.github.io/Loughborough/images/old-sign-icon.png" sizes="16x16 32x32">
+
+<link rel="shortcut icon" href="photo-gallery/old-sign.jpg" type="image/x-icon">
+
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="site.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/w3images/mac.jpg");
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+</style>
+</head>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cino cafe | Loughborough</title>
+  <style>
+      /* Styling for the cookie consent pop-up */
+      #cookie-consent-container {
+          display: none;
+          position: fixed;
+          bottom: -100%; /* Start below the viewport */
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: #333;
+          color: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          z-index: 1000;
+          animation: slide-in 0.5s forwards, fade-in 0.5s forwards;
+      }
+
+      /* Style for the checkbox label */
+      #policy-checkbox-label {
+          display: block;
+          margin-bottom: 10px;
+      }
+
+      /* Style the accept button */
+      #accept-cookies-button {
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          cursor: pointer;
+          border-radius: 5px;
+      }
+
+      /* Style for the cookie text */
+      #cookie-text {
+          margin-bottom: 10px;
+      }
+
+      /* Styling for the link */
+      #cookie-policy-link {
+          color: #4CAF50;
+          text-decoration: underline;
+      }
+
+      /* Keyframes for sliding in the pop-up */
+      @keyframes slide-in {
+          to {
+              bottom: 20px; /* Bring it to 20px above the bottom */
+          }
+      }
+
+      /* Keyframes for fading in the pop-up */
+      @keyframes fade-in {
+          to {
+              opacity: 1;
+          }
+      }
+
+      body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+    
+        .open-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            position: fixed;
+            bottom: 23px;
+            right: 28px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+            max-width: 50%; /* Adjust the maximum width as per your preference */
+        }
+    
+        .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: white;
+        }
+    
+        .form-container input[type="text"],
+        .form-container input[type="email"] {
+            width: calc(110% - 20px);
+            padding: 10px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+            resize: none;
+            display: inline-block;
+        }
+    
+        .form-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+            resize: none;
+            min-height: 200px;
+        }
+    
+        .form-container textarea:focus,
+        .form-container input:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+    
+        .form-container .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+    
+        .form-container .cancel {
+            background-color: red;
+        }
+    
+        .form-container .btn:hover,
+        .open-button:hover {
+            opacity: 1;
+        }
+    
+        @media screen and (max-width: 700px) {
+            .open-button {
+                width: 70px;
+                height: 70px;
+                font-size: 14px;
+                right: 10px;
+            }
+    
+            .chat-popup {
+                max-width: 60%;
+            }
+        }
+  </style>
+</head>
+<body>
+
+  <!-- Cookie consent pop-up -->
+  <div id="cookie-consent-container">
+    <p id="cookie-text">This website uses cookies to ensure you get the best experience. <a id="cookie-policy-link" href="Policy.html">Cookie Policy</a></p>
+    <p id="cookie-text">The website <a id="cookie-policy-link" href="Privacy-Policy.html">Term and Conditions</a></p>
+    
+
+    <!-- Add the checkbox for policy agreement -->
+    <label id="policy-checkbox-label" for="policy-checkbox">
+      <input type="checkbox" id="policy-checkbox" name="policyAgreement">
+      I agree to the policy
+    </label>
+    <label id="terms-checkbox-label" for="terms-checkbox">
+      <input type="checkbox" id="terms-checkbox" name="termsAgreement">
+      I agree to the Terms and conditions
+    </label>
+
+    <br>
+    <button id="accept-cookies-button" disabled>Accept</button>
+  </div>
+
+  <script>
+    // Function to show the cookie consent pop-up
+    function showCookieConsent() {
+      document.getElementById("cookie-consent-container").style.display = "block";
+    }
+
+    // Function to hide the cookie consent pop-up
+    function hideCookieConsent() {
+      document.getElementById("cookie-consent-container").style.display = "none";
+    }
+
+    // Event listener for the checkboxes' change
+    function updateAcceptButton() {
+      const policyCheckbox = document.getElementById("policy-checkbox");
+      const termsCheckbox = document.getElementById("terms-checkbox");
+      const acceptButton = document.getElementById("accept-cookies-button");
+
+      acceptButton.disabled = !(policyCheckbox.checked && termsCheckbox.checked);
+    }
+
+    // Event listener for the checkbox change
+    document.getElementById("policy-checkbox").addEventListener("change", updateAcceptButton);
+    document.getElementById("terms-checkbox").addEventListener("change", updateAcceptButton);
+
+    // Check if the user has previously accepted cookies
+    if (!localStorage.getItem("cookieConsent")) {
+      showCookieConsent();
+    }
+
+    // Event listener for the "Accept Cookies" button
+    document.getElementById("accept-cookies-button").addEventListener("click", function () {
+      const policyCheckbox = document.getElementById("policy-checkbox");
+      if (policyCheckbox.checked) {
+        localStorage.setItem("cookieConsent", "accepted");
+        hideCookieConsent();
+      }
+    });
+  </script>
+</body>
+
+<style>
+  /* Add this style in the head or in a separate CSS file */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #333;
+    animation: spin 1s linear infinite;
+  }
+</style>
+
+<button class="open-button" onclick="openForm()">
+  <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 640 512">
+      <path d="M208 352c114.9 0 208-78.8 208-176S322.9 0 208 0S0 78.8 0 176c0 38.6 14.7 74.3 39.6 103.4c-3.5 9.4-8.7 17.7-14.2 24.7c-4.8 6.2-9.7 11-13.3 14.3c-1.8 1.6-3.3 2.9-4.3 3.7c-.5 .4-.9 .7-1.1 .8l-.2 .2 0 0 0 0C1 327.2-1.4 334.4 .8 340.9S9.1 352 16 352c21.8 0 43.8-5.6 62.1-12.5c9.2-3.5 17.8-7.4 25.3-11.4C134.1 343.3 169.8 352 208 352zM448 176c0 112.3-99.1 196.9-216.5 207C255.8 457.4 336.4 512 432 512c38.2 0 73.9-8.7 104.7-23.9c7.5 4 16 7.9 25.2 11.4c18.3 6.9 40.3 12.5 62.1 12.5c6.9 0 13.1-4.5 15.2-11.1c2.1-6.6-.2-13.8-5.8-17.9l0 0 0 0-.2-.2c-.2-.2-.6-.4-1.1-.8c-1-.8-2.5-2-4.3-3.7c-3.6-3.3-8.5-8.1-13.3-14.3c-5.5-7-10.7-15.4-14.2-24.7c24.9-29 39.6-64.7 39.6-103.4c0-92.8-84.9-168.9-192.6-175.5c.4 5.1 .6 10.3 .6 15.5z"/>
+  </svg>
+</button>
+
+<div class="chat-popup" id="myForm">
+  <form class="form-container">
+      <h1>Contact us</h1>
+
+      <label for="name"><b>Your Name</b></label>
+      <input type="text" id="name" placeholder="Your Name..." required>
+
+      <label for="email"><b>Email</b></label>
+      <input type="email" id="email" placeholder="Your Email..." required>
+
+      <label for="msg"><b>Message</b></label>
+      <textarea id="msg" placeholder="Type message..." name="msg" required></textarea>
+
+      <!-- Add a loading spinner for a more visual indication -->
+      <div id="loading-circle" style="display: none; font-weight: bold; margin-top: 10px;">
+        Sending... <span class="spinner"></span>
+      </div>
+
+
+       <!-- Add a loading circle -->
+       <div id="loading-circle" style="display: none; font-weight: bold; font-size: 30px !important; margin-top: 10px;">
+        Sending...
+      </div>
+
+      <button type="button" class="btn" onclick="sendEmail()">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  emailjs.init("bO3YR9VLVnM7PnpAs");
+
+  function openForm() {
+      document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+  }
+
+  function sendEmail() {
+    // Display loading circle
+    document.getElementById('loading-circle').style.display = 'block';
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("msg").value;
+
+      // Replace 'service_your_emailjs_service_id' and 'template_your_emailjs_template_id' with your actual EmailJS service ID and template ID.
+      const templateParams = {
+          from_name: name,
+          from_email: email,
+          message: message
+      };
+
+      emailjs.send("service_o2aa31d", "template_1f0s04e", templateParams)
+          .then(function (response) {
+              console.log("Email sent successfully:", response);
+              alert("Your Feedback was sent Successfully!");
+              
+            // Hide loading circle after email is sent
+            document.getElementById('loading-circle').style.display = 'none';
+
+            // Simulate a 0.5-second delay before redirecting
+            setTimeout(function () {
+              window.location.href = "form-complete.html";
+              closeForm();
+            }, 500);
+          }, function (error) {
+            console.log("Failed to send email:", error);
+            alert("Oops! Something went wrong. Please try again later.");
+
+            // Hide loading circle on error
+            document.getElementById('loading-circle').style.display = 'none';
+          });
+          
+  }
+</script>
+
+<style>
+  body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      /* overflow: hidden; Prevent scrolling when the popup is visible */
+  }
+
+  .overlay-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Dark background color with alpha transparency */
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 1s;
+  }
+
+  .popup-box-container {
+      background: #ff6666; /* Lighter red background color */
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      width: 600px; /* Set a maximum width for small screens */
+      height: 100%;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 1s, width 1s ease-in-out;
+  }
+
+  .greeting-text {
+      font-size: 24px;
+      color: #fff;
+      margin: 0;
+      padding: 15px;
+      border: 3px solid #fff; /* White border around the message */
+      border-radius: 15px; /* Border radius for a rounded look */
+      animation: fadeIn 1s, borderFade 1s;
+  }
+
+  .overlay-display {
+      visibility: visible;
+      opacity: 1;
+  }
+
+  .popup-box-display {
+      visibility: visible;
+      opacity: 1;
+      width: 100%;
+  }
+
+  .popup-closing {
+      animation: fadeOut 1s, shrinkWidth 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+
+  @keyframes fadeOut {
+      from {
+          opacity: 1;
+      }
+      to {
+          opacity: 0;
+      }
+  }
+
+  @keyframes shrinkWidth {
+      from {
+          width: 100%;
+      }
+      to {
+          width: 0;
+      }
+  }
+
+  @keyframes borderFade {
+      from {
+          border-color: #ff6666;
+      }
+      to {
+          border-color: #fff;
+      }
+  }
+
+  .close-button {
+      display: none; /* Hide the close button */
+  }
+
+  /* Responsive styles for small screens */
+  @media only screen and (max-width: 600px) {
+      .popup-box-container {
+          padding: 15px;
+      }
+      .greeting-text {
+          font-size: 18px;
+      }
+  }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the popup has been displayed before
+    var hasPopupBeenShown = localStorage.getItem('popupDisplayed');
+
+    function displayPopup() {
+        if (!hasPopupBeenShown) {
+            document.getElementById('overlay-container').classList.add('overlay-display');
+            document.getElementById('popup-box-container').classList.add('popup-box-display');
+
+            // Prevent scrolling on the body when the popup is open
+            document.body.style.overflow = 'hidden';
+
+            // Close the popup after 2.5 seconds
+            setTimeout(function() {
+                document.getElementById('overlay-container').classList.add('popup-closing');
+                document.getElementById('popup-box-container').classList.add('popup-closing');
+
+                // After the animation, hide the popup
+                setTimeout(function() {
+                    document.getElementById('overlay-container').classList.remove('overlay-display', 'popup-closing');
+                    document.getElementById('popup-box-container').classList.remove('popup-box-display', 'popup-closing');
+
+                    // Allow scrolling on the body when the popup is closed
+                    document.body.style.overflow = 'visible';
+
+                    // Set the flag in localStorage to indicate that the popup has been displayed
+                    localStorage.setItem('popupDisplayed', true);
+                }, 1000); // Adjust the timing based on your animation duration
+            }, 2500);
+        }
+    }
+
+    // Show the popup after a delay (e.g., 2 seconds)
+    setTimeout(displayPopup, 2000);
+});
+
+</script>
+</head>
+<body>
+
+<div class="overlay-container" id="overlay-container">
+  <div class="popup-box-container" id="popup-box-container">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <p class="greeting-text">Welcome to Cino Cafe website!</p>
+  </div>
+</div>
+
+
+</div>
+</body>
+
+<body>
+
+<center>
+
+<div class="navbar">
+ 
+<a href="cino-cafe.html">Home</a>
+<a href="team.html">Meet Our Team</a>
+<a href="photo-gallery.html">Photo Gallery</a>
+
+
+<br>
+	<h1 style="color:white;">CINO CAFE WEBSITE</h1>
+  <a href="Times.html">Opening Hours</a>
+  <a href="menu.html">Menu</a>
+  <a href="END.html">Goodbye</a>
+  <a href="Web-deisgner.html">Web Developer</a>
+
+  <br>
+  
+
+
+  
+  <br>
+  <br>
+  <br>
+  
+ 
+<hr>
+
+
+  <div class="dropdown">
+    <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></button>
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+</style>
+</head>
+<body>
+
+
+
+  <div class="row">
+    <div class="left" style="background-color:#bbb;">
+      
+     <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+     <ul id="myMenu">
+      <li><a href="index.html">login page</a></li>
+      <li><a href="create-account.html">create a new account</a></li>
+      <li><a href="https://www.instagram.com/cino_cafe_loughborough/?hl=en">Cinos Instagram</a></li>
+      <li><a href="https://www.facebook.com/cinoloughborough">Cinos Facebook</a></li>
+      <li><a href="https://www.tripadvisor.co.uk/Restaurant_Review-g190776-d3814196-Reviews-Cino-Loughborough_Leicestershire_England.html">reviews and feeback on cino cafe</a></li>
+	    <li><a href="cino-cafe-feedback.html">Give us your Feedback</a></li>
+      <li><a href="https://www.youtube.com/watch?v=zzoKth3zmX0">Inside the Cafe</a></li>
+      <li><a href="food-hygiene.html">Food Hygiene</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="music.html">Cino Cafe Music</a></li>
+      <li><a href="device.html">Cino Cafe Devices</a></li>
+      <li><a href="secret.html">Comming Soon</a></li>
+      <li><a href="https://cino.daily.co/cino-cafe">Video chat</a></li>
+      <li><a href="Privacy-Policy.html">Terms and Conditions</a></li>
+      <li><a href="Policy.html">Cookie Policy</a></li>
+
+
+     </ul>
+    </div>
+
+    
+
+  </div>
+
+  
+
+  <script>
+  function myFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("mySearch");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myMenu");
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+  }
+  </script>
+
+</body>
+
+
+<head>
+<style>
+body {
+background-image: url('https://www.asianpaints.com/content/dam/asian_paints/colours/swatches/470.png.transform/cc-width-720-height-540/image.png');
+
+}
+</style>
+</head>
+ </div>
+  </div> 
+</div>
+<br>
+
+</center>
+<br>
+<head>
+<title>Cino Cafe | Loughborough</title>
+</head>
+<body>
+<center>
+
+
+  
+
+<!-- Slide Show -->
+<section>
+  <img class="mySlides" src="https://i2-prod.loughboroughecho.net/news/local-news/article6698277.ece/ALTERNATES/s615/COFFEE.jpg"
+  style= "width: 40%" >
+  <img class="mySlides" src="photo-gallery\full-view-2.jpg"
+  style= "width:23%">
+  <img class="mySlides" src="photo-gallery\full view.jpg"
+  style= "width:23%">
+  <img class="mySlides" src="photo-gallery\Cino-interior.jpg"
+  style= "width:40%">
+  <img class="mySlides" src="photo-gallery\Cino-Cafe.jpg"
+  style= "width:23%">
+  <img class="mySlides" src="edit-video/dark-out-side-view.jpg"
+  style= "width:23%">
+  <img class="mySlides" src="edit-video/cino-tele-side-sign.jpg"
+  style= "width:23%">
+  <img class="mySlides" src="edit-video\coffee-machine-cino.jpg"
+  style= "width:35%">
+</section>
+
+<script>
+// Automatic Slideshow - change image every 3 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 3000);
+}
+</script>
+
+</center>
+</body>
+
+<center>
+
+
+
+
+
+<br>
+<br>
+<br>
+
+<html>
+<head>
+<style>
+.button {
+  position: relative;
+  background-color: #e9dddd;
+  border: none;
+  font-size: 28px;
+  color: #0f0d0d;
+  padding: 20px;
+  width: 400px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button:after {
+  content: "";
+  background: #e24c41;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+@media screen and (max-width: 400px) {
+  .button {
+  position: relative;
+  background-color: #e9dddd;
+  border: none;
+  font-size: 28px;
+  color: #0f0d0d;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button:after {
+  content: "";
+  background: #e24c41;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+}
+</style>
+</head>
+<body>
+
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <body>
+    <div class="w3-container">
+      <!-- Hidden progress bar initially -->
+      <div class="w3-light-grey" style="display: none;">
+        <div id="myBar" class="w3-container w3-green" style="width: 0%">0%</div>
+      </div>
+      <br>
+      <button class="button" onclick="startProgress()">Directions Here</button> 
+    </div>
+
+    <div class="w3-container">
+      <!-- Hidden progress bar initially -->
+      <div class="w3-light-grey" style="display: none;">
+        <div id="myBar" class="w3-container w3-green" style="width: 0%">0%</div>
+      </div>
+      <br>
+      <button class="button" onclick="startProgress2()">Play Games</button> 
+    </div>
+
+    <script>
+      function move() {
+        var elem = document.getElementById("myBar");   
+        var width = 0;
+        var id = setInterval(frame, 10);
+        function frame() {
+          if (width >= 100) {
+            clearInterval(id);
+          } else {
+            width++; 
+            elem.style.width = width + '%'; 
+            elem.innerHTML = width * 1  + '%';
+          }
+        }
+      }
+
+      
+
+      function startProgress() {
+        // Show the progress bar
+        var progressBar = document.querySelector('.w3-light-grey');
+        progressBar.style.display = 'block';
+
+        // Start the progress animation
+        move();
+        
+        // You can also add a delay before redirecting
+        setTimeout(function() {
+          window.location.href = "https://www.google.co.uk/maps/place/Cino+Caf%C3%A9/@52.7716255,-1.2093999,17z/data=!3m1!4b1!4m5!3m4!1s0x4879e0b063535bdb:0xe0b2bcc12934f6a3!8m2!3d52.7716255!4d-1.2072112"; // Replace with your desired link
+        }, 2000); // 2000 milliseconds = 2 seconds
+      }
+
+    
+
+      
+
+function startProgress2() {
+  // Show the progress bar
+  var progressBar = document.querySelector('.w3-light-grey');
+  progressBar.style.display = 'block';
+
+  // Start the progress animation
+  move();
+  
+  // You can also add a delay before redirecting
+  setTimeout(function() {
+    window.location.href = "Game-Menu.html"; // Replace with your desired link
+  }, 2000); // 2000 milliseconds = 2 seconds
+}
+      
+
+    </script>
+  </body>
+
+
+
+</center>
+
+
+
+<style>
+     
+    </style>
+  </head>
+  
+
+
+ 
+
+<style>
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center
+      }
+      img {
+        max-width: 100%
+      }
+      .image {
+        flex-basis: 40%
+      }
+      .text {
+        font-size: 20px;
+        padding-left: 20px;
+      }
+
+    </style>
+  </head>
+ 
+</body>
+
+<body>
+<hr>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typewriter Effect with Scroll Trigger</title>
+  <style>
+    /* Styling for the typewriter text */
+    #typewriter-text {
+      font-size: 24px;
+      line-height: 1.5;
+      visibility: hidden; /* Initially hide the text */
+    }
+  </style>
+</head>
+<body>
+  <p id="typewriter-text"></p>
+
+  <script>
+    var text = "Welcome, this section contains all the information about cino cafe.";
+    var speed = 50; // Typing speed in milliseconds
+    var index = 0;
+    var textContainer = document.getElementById("typewriter-text");
+    
+    var options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    var observer = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          textContainer.style.visibility = "visible";
+          observer.unobserve(textContainer);
+          typeWriter();
+        }
+      });
+    }, options);
+
+    function typeWriter() {
+      if (index < text.length) {
+        textContainer.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    observer.observe(textContainer);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+  
+
+
+<!-- The visit Section 1 -->
+<div class="w3-padding-64 w3-cream">
+  <div class="w3-row-padding">
+    <div class="w3-col l8 m6">
+      <h1 class="w3-jumbo"><b>Why choose</b></h1>
+      <h1 class="w3-xxxlarge w3-text-green"><b>Cino cafe?</b></h1>
+      <h4><span class="w3-xlarge w3-text-black">Why should you visit cino cafe.</span> You should visit cino cafe because:<br>- We give out FREE biscuits everytime you order a drink.<br>- The staff and the managers are super friendly and kind.<br>- If there are any problems with your visit at cinos we will sort it out for you in seconds.<br>- Most of the food is all homemade.<br>- It is all TABLE SERVICE.</h4>
+
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="photo-gallery\nauthy-scones.jpg" class="w3-image w3-right w3-hide-small" width="335" height="471">
+      <div class="w3-center w3-hide-large w3-hide-medium">
+
+        <img src="photo-gallery\nauthy-scones.jpg" class="w3-image w3-margin-top" width="335" height="471">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- menu Section 2 -->
+<div class="w3-padding-64 w3-light-cream">
+  <div class="w3-row-padding">
+    <div class="w3-col l4 m6">
+      <img class="w3-image w3-round-large w3-hide-small" src="photo-gallery\cinoowners.jpg" alt="image" width="335" height="471">
+      <div class="w3-center w3-hide-large w3-hide-medium">
+
+        <img src="photo-gallery\cinoowners.jpg" class="w3-image w3-margin-top" width="335" height="471">
+      </div>
+    </div>
+    <div class="w3-col l8 m6">
+      <h1 class="w3-jumbo"><b>Discover</b></h1>
+      <h1 class="w3-xxxlarge w3-text-white"><b>cino cafe</b></h1>
+      <h4><span class="w3-xlarge">Cino Cafe History.</span> Cino cafe all started 20 years ago in 2003 when 2 people called Michael Paolella and Staz Defao decided to get business together. They were both italains and had worked in the same industry in other restruants. When they were choosing a name for their business it was between lafuittla and cino.</h4>
+    </div>
+  </div>
+</div>
+
+<!-- The App Section 3 -->
+<div class="w3-padding-64 w3-cream">
+  <div class="w3-row-padding">
+    <div class="w3-col l8 m6">
+      <h1 class="w3-jumbo"><b>A taste of</b></h1>
+      <h1 class="w3-xxxlarge w3-text-red"><b>cino cafe</b></h1>
+      <h4><span class="w3-xlarge w3-text-black">Cino Cafe Offers</span> an amazing italian menu from Drinks to Food and deserts. It is all homemade and fresh stright from the kitchen/bar to your table, Thanks to our amazing chef "Christina Paolella".</h4>
+      <h4>For more information about our menu <a href="menu.html" title="W3.CSS" target="_blank" class="w3-hover-text-red">Click Here</a></h4>
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="photo-gallery\breakfast-3.jpg" class="w3-image w3-right w3-hide-small" width="335" height="471">
+      <div class="w3-center w3-hide-large w3-hide-medium">
+
+        <img src="photo-gallery\breakfast-3.jpg" class="w3-image w3-margin-top" width="335" height="471">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- About Section -->
+
+  <div class="w3-container" style="padding:128px 16px" id="about">
+    <h3 class="w3-center">ABOUT THE CAFE</h3>
+    <p class="w3-center w3-large">Key features of our cafe</p>
+    <div class="w3-row-padding w3-center" style="margin-top:64px">
+      <div class="w3-quarter">
+        <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+        <p class="w3-large">Responsive</p>
+        <p>Our website is responsive for laptop and mobile use.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Passion</p>
+        <p>When make all of our orders with care and love.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Design</p>
+        <p>The interior of cino cafe is an old classic itlian look.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">Support</p>
+        <p>This is a family business that has been running for 20 years.</p>
+      </div>
+    </div>
+  </div>
+
+<!-- Features Section -->
+<div class="w3-container w3-padding-64 w3-dark-grey w3-center">
+  <h1 class="w3-jumbo"><b>Features</b></h1>
+  <p>cino cafe website features.</p>
+
+  <div class="w3-row" style="margin-top:64px">
+    <div class="w3-col s3">
+      <i class="fa fa-bolt w3-text-orange w3-jumbo"></i>
+      <p>Fast</p>
+    </div>
+    <div class="w3-col s3">
+      <i class="fa fa-heart w3-text-red w3-jumbo"></i>
+      <p>Loved</p>
+    </div>
+    <div class="w3-col s3">
+      <i class="fa fa-camera w3-text-yellow w3-jumbo"></i>
+      <p>Clarity</p>
+    </div>
+    <div class="w3-col s3">
+      <i class="fa fa-battery-full w3-text-green w3-jumbo"></i>
+      <p>Power</p>
+    </div>
+  </div>
+
+  <div class="w3-row" style="margin-top:64px">
+    <div class="w3-col s3">
+      <i class="fa fa-diamond w3-text-white w3-jumbo"></i>
+      <p>Sharp</p>
+    </div>
+    <div class="w3-col s3">
+      <i class="fa fa-cloud w3-text-blue w3-jumbo"></i>
+      <p>Cloud</p>
+    </div>
+    <div class="w3-col s3">
+      <i class="fa fa-globe w3-text-amber w3-jumbo"></i>
+      <p>Global</p>
+    </div>
+    <div class="w3-col s3">
+      <i class="fa fa-hdd-o w3-text-cyan w3-jumbo"></i>
+      <p>Storage</p>
+    </div>
+  </div>
+  
+  <div class="w3-row" style="margin-top:64px">
+    <div class="w3-col s3">
+      <i class="fa fa-user w3-text-sand w3-jumbo"></i>
+      <p>Safe</p>
+    </div>
+    <div class="w3-col s3">
+      <i class="fa fa-shield w3-text-orange w3-jumbo"></i>
+      <p>Stabile</p>
+    </div>
+    <div class="w3-col s3">
+      <i class="fa fa-wifi w3-text-grey w3-jumbo"></i>
+      <p>Connected</p>
+    </div>
+    <div class="w3-col s3">
+      <i class="fa fa-image w3-text-pink w3-jumbo"></i>
+      <p>HD</p>
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  #mySidenav a {
+    position: absolute;
+    left: -80px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #mySidenav a:hover {
+    left: 0;
+  }
+  
+  #about {
+    top: 33%;
+    background-color: #bd9d84;
+  }
+  
+  #blog {
+    top: 63%;
+    background-color: #fcfcfc;
+  }
+  
+  #projects {
+    top: 70%;
+    background-color: #e53b3b;
+  }
+
+  #red {
+    top: 55%;
+    background-color: #5daf61;
+  }
+  
+
+  </style>
+  </head>
+  <body>
+   
+  <div id="mySidenav" class="sidenav">
+    <a href="Privacy-Policy.html" id="red">Policy</a>
+    <a href="Error.html" id="blog">page</a>
+    <a href="cino-cafe-feedback.html" id="projects">Review</a>
+ 
+  </div>
+  
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="cino-cafe.html" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Available for <i class="fa fa-android w3-xlarge w3-text-green"></i> <i class="fa fa-apple w3-xlarge"></i> <i class="fa fa-windows w3-xlarge w3-text-blue"></i></p>
+  <p>Desgined by <a href="Web-deisgner.html" title="W3.CSS" target="_blank" class="w3-hover-text-green">Harry Paolella</a></p>
+</footer>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+     
+  </body>
+</html>
